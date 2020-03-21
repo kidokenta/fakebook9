@@ -1,0 +1,75 @@
+
+
+<% @posts.each do |post| %>
+
+      <div class = "post">
+
+<%# -----------------------ここから投稿の上部分-------------- %>
+            <div class = "postcontent">
+                  <div class = "postcontentuser">
+                       <div class = "imageandname">
+                           <div class = "postuserimage">
+                           <%= image_tag post.user.image.url, :size => '70x70',class: "userimage" if post.user.image.present?%></div> 
+                           <div class = "postusername"><p><span></span><%=link_to post.user.username, user_path(post.user.id),class: "fortextdeconone" %></p> </div>
+
+
+
+
+<div class = "followsindex">
+ <% if current_user != post.user %>
+        <% if post.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー済み", user_relationships_path(post.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(post.user.id), method: :post %></p>
+        <% end %>
+    <% end %>
+    </div>
+
+
+                      </div>
+                      <div class = "dataandfunction">
+                           <div class = "postcontentdata"><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+                              <div class = "superfunction">
+                              <%# ------------------------- %>
+
+                              <%# ---------------------- %>
+
+                              <%= link_to "", post_path(post.id), class: "fas fa-cog todetail"%>
+                               </div>
+                      </div>
+                 </div>
+                 <div class = "postcontentmain">
+                     <p><span></span><%=simple_format post.content %></p>
+                    
+                    <div class = "postcontentimage">
+                     <%= image_tag post.image.url, :size => '430x500',class: "postcontentimageinside" if post.image.present?%>
+                     </div>
+                     
+
+                     
+                 </div>
+            </div>
+<%# -------------------投稿の上部分終了--------------------------
+--------------------ここから投稿下部分----------------------- %>
+
+          <div class = "postlikecomment">
+
+     <% if user_signed_in? %>
+    <% if post.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+        <p><span><i class="fas fa-thumbs-up">  </i></span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :delete %></p>
+    <% else %>
+        <p><span><i class="fas fa-thumbs-up">  </i></span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :post %></p>
+    <% end %>
+  <% else %>
+   <%end%>
+    <p><span>お気に入り数: </span><%= post.favorites.count %></p>
+    <%# -----------------------------------------------------
+    %
+
+     <%# ------------------------------------- %>
+          </div>
+      
+
+     </div>
+
+ <% end %>

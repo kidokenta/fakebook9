@@ -1,0 +1,51 @@
+
+
+<div class = "timelinewrapper">
+
+<% if user_signed_in?%>
+             <div class = "postform">
+                    <div class = "postformtitle">投稿を作成</div>
+                  <%= form_for @post do |f| %>
+                  <div class = "textareabox">
+                       <div class = "textareaclass">
+                           <%= f.text_area :content, placeholder: "#{current_user.username}さん ー 今何してる？", class: "textarea" %>
+                        </div>
+
+
+                  <div class = "postimagebtns">
+                     <%= f.submit "投稿" ,class: "textsubmit"%>
+                     <%= f.label :image, class: "imagebutton" do%>
+                        <div class = "fas fa-image fa-lg"></div>
+                         <%= f.file_field :image, class: "hidden"%>
+                         <%end%>
+                          </div>
+
+
+                          </div>
+                          </div>
+                 <% end %>
+
+                 <%else%>
+
+               <div class = "postform">
+                    <div class = "postformtitle">投稿を作成するにはログイン、または登録が必要です</div>
+                  <%= form_for @post do |f| %>
+                  <div class = "textareabox">
+
+                       <div class = "textareaclass">
+                           <%= f.text_area :content, placeholder: "ゲストさん ー 今何してる？投稿を作成するにはログイン、または登録が必要です", class: "textarea" %>
+                        </div>
+                        <%end%>
+
+
+                          </div>
+                          </div>
+
+               
+<%end%>
+
+    <%= render partial:"infos",local:{post: @post}%>
+
+ </div>
+
+

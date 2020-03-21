@@ -1,0 +1,78 @@
+.section{
+  overflow:scroll
+}
+
+.main{
+  height:100%;
+  width:80%;
+  margin: 0 auto;
+  overflow:scroll;
+}
+
+
+
+.postform{
+  background:white;
+  height:100px;
+  width:100%;
+  margin:0 auto;
+  padding-top:4px;
+  margin-bottom:10px;
+  .postformtitle{
+    color:black;
+    height:20px;
+    line-height:20px;
+    border-bottom:1px solid gray;
+    padding-left:20px;
+  }
+  .textareabox{
+    height:60px;
+    width:100%;
+    background:white;
+    display: flex;
+    
+    .textareaclass{
+      height:100%;
+      width:80%;
+      margin-top:8px;
+      .textarea{
+        height:100%;
+        width:100%;
+        resize:none;
+        border:none;
+        margin-left:3px;
+
+      }
+    }
+    .postimagebtns{
+      height:100%;
+      width:20%;
+      line-height: 60px;
+      text-align:center;
+      margin-top:8px;
+      color:black;
+      .textsubmit{
+        height:50px;
+        width:60%;
+        color:black;
+        background-color: #385898;
+        cursor:pointer
+      }
+      .imagebutton{
+        color:black;
+        cursor: pointer;
+      }
+    }
+
+    
+    
+  }
+  ::placeholder{
+    line-height:60px;
+    padding-left:20px;
+  }
+  .hidden{
+    display:none;
+  }
+}
+

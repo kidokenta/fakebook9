@@ -1,0 +1,163 @@
+.timelinewrapper{
+  position:fixed;
+  width:80%;
+  height:calc(100% - 100px);
+  margin-top:10px;
+  padding-top:10px;
+  overflow: scroll;
+}
+
+.post{
+  background:white;
+  width:100%;
+  margin-bottom:15px;
+  .postcontent{
+    background:white;
+    width:100%;
+    border-bottom:1px solid gray;
+    .postcontentuser{
+      background:white;
+      width:100%;
+      height:100px;
+      display:flex;
+      .imageandname{
+        width:50%;
+        height:100%;
+        background:white;
+        display:flex;
+        position: relative;
+        .followsindex{
+          background:white;
+          position: absolute;
+          bottom:10px;
+
+        }
+        .postuserimage{
+          background:gray;
+          height:50px;
+          width:50px;
+          border-radius:50%;
+          margin-left:20px;
+          .userimage{
+            height:50px;
+            width:50px;
+            border-radius: 50%;
+
+          }
+        }
+        .postusername{
+          color:black;
+          text-decoration:none;
+          margin-left:20px;
+          font-size:20px;
+        }
+
+      }
+      .dataandfunction{
+        background:white;
+        width:50%;
+        height:100%;
+        display:flex;
+        .postcontentdata{
+          width:50%;
+          color:gray;
+          font-size:15px;
+        }
+        .superfunction{
+          height:50px;
+          width:50%;
+          background:white;
+          .todetail{
+            float:right;
+            padding-right:10px;
+            float:right;
+            color:black;
+            padding-top:5px;
+            
+          }
+        }
+
+      }
+    }
+    .postcontentmain{
+      background:white;
+      height:100%;
+      width:90%;
+      margin: 0 auto;
+    }
+   
+  }
+  .postlikecomment{
+    background:white;
+    width:100%;
+    height:65px;
+  }
+}
+
+.fortextdeconone{
+  text-decoration: none;
+  color:black;
+}
+.fortextdeconone:hover{
+  background:none;
+  color:rgb(87, 87, 203);
+  transition: all .0s;
+}
+
+
+// ----非表示---
+
+.superfunction{
+  // margin: 2em 0;
+  padding: 0;
+}
+
+.superfunction label{
+  cursor :pointer;
+  float:right;
+  padding-right:10px;
+}
+
+.superfunction label:hover{
+  color:rgb(104, 104, 184);
+}
+
+.superfunction input{
+  display:none;
+}
+
+.superfunction .hiddenshow{
+  height:0;
+  padding:0;
+  overflow:hidden;
+  opacity:0;
+  transition:0.8s;
+}
+
+.superfunction input:checked ~ .hiddenshow{
+  padding:10px 0;
+  height:auto;
+  opacity:1;
+}
+
+.functionbox{
+  background:#385898;
+  display:block;
+  .postbtn{
+    text-decoration: none;
+    color:white;
+  }
+}
+
+.userindextitle{
+  background:white;
+  margin-bottom:10px;
+  font-size:25px;
+  text-align: center;
+}
+
+.insideuserimage{
+  height:50px;
+  width:50px;
+  border-radius:50%;
+}

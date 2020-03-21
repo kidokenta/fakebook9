@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fakebook9</title>
+    <title>Fakebook8</title>
+    <meta name="viewport" content="width=devise-width,initial-scale=1.0">
+    <link rel="stylesheets" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +13,29 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+    <input type ="checkbox" id="check">
+    <label for = "check" class = "checkbtn">
+    <i class="fas fa-bars"></i>
+    </label>
+    <label class ="fab fa-facebook-square logo"><%=link_to "akebook" , root_path, class: "toptop"%></label>
+    <ul>
+          <li><%=link_to " Home",root_path, class: "fas fa-home"%></li>
+    <% if user_signed_in? %>
+          <li><%= link_to "#{current_user.username}", user_path(current_user.id), class: "fas fa-user-alt" %></li>
+          <li><%= link_to " users index", users_path ,class: "fas fa-plus-square"%></li>
+          <li><%= link_to " log out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
+          <% else %>
+          <li><%= link_to " sign up", new_user_registration_path, class: "a i fas fa-user-plus" %></li>
+          <li><%= link_to " sign in", new_user_session_path, class:"fas fa-sign-in-alt" %></li>
+          <%end%>
+          <li><%= link_to " posts index", posts_path , class: "fas fa-book-open"%></li>
+    </ul>
+    </nav>
+    <section>
+    <div class = "main">
+     <%= yield %>
+     </div>
+    </section>
   </body>
 </html>

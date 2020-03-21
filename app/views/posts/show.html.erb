@@ -1,0 +1,95 @@
+
+<div class = "timelinewrapper">
+<div class = "post">
+
+<%# -----------------------ここから投稿の上部分-------------- %>
+     <div class = "postcontent">
+             <div class = "postcontentuser">
+                           <div class = "imageandname">
+                              <div class = "postuserimage"><%= image_tag @post.user.image.url, :size => '50x50', class: "insideuserimage" if @post.user.image.present?%></div>
+                               <div class = "postusername"> <p><span></span><%=link_to @user.username, user_path(@user.id),class: "fortextdeconone" %></p></div>
+
+
+
+<div class = "followsindex">
+ <% if current_user != @post.user %>
+        <% if @post.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー済み", user_relationships_path(@post.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(@post.user.id), method: :post %></p>
+        <% end %>
+    <% end %>
+    </div>
+
+
+
+
+                           </div>
+                      <div class = "dataandfunction">
+                           <div class = "postcontentdata"><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S')%></div>
+                              <div class = "superfunction">
+                                  <label for="label" class = "fas fa-ellipsis-h fa-2x "></label>
+                                 <input type ="checkbox" id = "label">
+                                   <div class ="hiddenshow">
+                                    <%# ----非表示始まりーーー %>
+                                    <% if user_signed_in? && current_user.id == @post.user_id %>
+                                   <div class = "functionbox">
+                                    <%= link_to "削除", "/posts/#{@post.id}",method: :delete, class: "postbtn"%>
+                                    <%= link_to "編集", "/posts/#{@post.id}/edit",class: "postbtn"%>
+                                    </div>
+                                    <%end%>
+                                   <%# ーーー非表示終わりーーー  %>               
+                               </div>
+                      </div>
+                  </div>
+                      
+             </div>
+             <div class = "postcontentmain">
+                          <p><span></span><%=simple_format @post.content %></p>
+                      </div>
+                      <div class = "postcontentimage">
+                     <%= image_tag @post.image.url,  :size => '350x450',class: "postcontentimageinside" if @post.image.present?%>
+                     </div>
+       </div>
+<%# -------------------投稿の上部分終了--------------------------
+--------------------ここから投稿下部分----------------------- %>
+
+          
+          <div class = "postlikecomment">
+          <% if user_signed_in? %>
+    <% if @post.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+        <p><span><i class="fas fa-thumbs-up"></i></span><%=link_to @post.favorites.count, post_favorites_path(@post.id), method: :delete %></p>
+    <% else %>
+        <p><span><i class="fas fa-thumbs-up">  </i></span><%=link_to @post.favorites.count, post_favorites_path(@post.id), method: :post %></p>
+    <% end %>
+  <% else %>
+   <%end%>
+    <p><span>お気に入り数: </span><%= @post.favorites.count %></p>
+      
+
+          </div>
+      
+
+<%# ------------------------ %>
+       <% if current_user %>
+      <%= form_with(model: [@post, @comment], local: true, id: "new_comment") do |form| %> 
+  <%= form.text_area :body, placeholder: "コメントする" , rows: "2", class: "textbox" %>
+  <%= form.submit "SEND", class: "form__submit" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.username, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.body %>
+          </p>
+        <% end %>
+      <% end %>
+      <%# -------------------------------------- %>
+
+     </div>
+</div>

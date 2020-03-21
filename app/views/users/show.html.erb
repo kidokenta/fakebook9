@@ -1,2 +1,179 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<div class = "uswrapper">
+
+<%# -------------------------------------- %>
+
+    <div class = "usimagenamewrapper">
+    <%= image_tag @user.backimage.url,class: "userbackimage" if @user.backimage.present?%>
+
+                                <div class = "superfunc">
+                                <div class = "superfunction">
+                                  <label for="label" class = "fas fa-ellipsis-h fa-2x "></label>
+                                 <input type ="checkbox" id = "label">
+                                   <div class ="hiddenshow">
+                                    <%# ----非表示始まりーーー %>
+                                    <% if user_signed_in? && current_user == @user %>
+                                   <div class = "functionbox">
+                                    <%= link_to "削除", "/users/#{@user.id}",method: :delete, class: "postbtn"%>
+                                    <%= link_to "編集", "/users/edit",class: "postbtn"%>
+                                    </div>
+                                    <%end%>
+                                   <%# ーーー非表示終わりーーー  %>               
+                               </div>
+                               </div>
+                               </div>
+         <div class = "imagenamebox"> 
+            <div class = "usimagebox">
+                <div class = "userimageinshow">
+              <%= image_tag @user.image.url, :size => '100x100',class: "userimage" if @user.image.present?%>
+                </div>
+                </div>
+            <div class = "usnamebox"><%= @user.username %></div>
+        </div>
+    
+    </div>
+ <%# --------------------------------------- %>
+
+
+  <div class = "intindexbox">
+
+        <div class = "usintwrapper">
+        <div class = "fas fa-globe-asia userinttitle">自己紹介</div>
+
+        <div class = "usint"><%= @user.introduce %></div>
+        <div class = "fas fa-briefcase uscontent">現在の住まい：<%=@user.region%></div><br><br>
+        <div class = "fas fa-birthday-cake uscontent">誕生日：<%=@user.birth%></div><br><br>
+        <div class = "fas fa-baby-carriage uscontent">年齢：<%=@user.age%></div><br><br>
+        <div class = "fas fa-venus-mars uscontent">性別：<%=@user.gender%></div><br>
+
+
+    
+       
+<p><%=link_to "フォロー", follows_user_path(@user.id) %></p>
+<p><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
+<% if current_user != @user %>
+    <% if @user.followed_by?(current_user) %>
+        <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+    <% else %>
+        <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+    <% end %>
+<% end %>
+    
+        </div>
+
+
+         <div class = "usindexwrapper">
+
+<%# ------------------------------------------------------- %>
+
+         <% if user_signed_in?%>
+             <div class = "postform">
+                    <div class = "postformtitle">投稿を作成</div>
+                  <%= form_for @post do |f| %>
+                  <div class = "textareabox">
+                   
+
+                       <div class = "textareaclass">
+                           <%= f.text_area :content, placeholder: "#{current_user.username}さん ー 今何してる？", class: "textarea" %>
+                        </div>
+
+
+                  <div class = "postimagebtns">
+                     <%= f.submit "投稿" ,class: "textsubmit"%>
+                     <%= f.label :image, class: "imagebutton" do%>
+                        <div class = "fas fa-image fa-lg"></div>
+                         <%= f.file_field :image, class: "hidden"%>
+                         <%end%>
+                          </div>
+
+
+                          </div>
+                          </div>
+                 <% end %>
+
+                 <%else%>
+
+               <div class = "postform">
+                    <div class = "postformtitle">投稿を作成するにはログイン、または登録が必要です</div>
+                  <%= form_for @post do |f| %>
+                  <div class = "textareabox">
+
+                       <div class = "textareaclass">
+                           <%= f.text_area :content, placeholder: "ゲストさん ー 今何してる？投稿を作成するにはログイン、または登録が必要です", class: "textarea" %>
+                        </div>
+                        <%end%>
+
+
+                          </div>
+                          </div>
+
+                   <%end%>
+<%# ------------------------------------------------ %>
+<% @posts.each do |post| %>
+
+      <div class = "post">
+
+<%# -----------------------ここから投稿の上部分-------------- %>
+            <div class = "postcontent">
+                  <div class = "postcontentuser">
+                       <div class = "imageandname">
+                           <div class = "postuserimage">
+                     <%= image_tag post.user.image.url, :size => '50x50', class: "insideuserimage" if post.user.image.present?%>
+                     </div>
+                           <div class = "postusername"> <p><span></span><%=link_to post.user.username, user_path(post.user.id),class: "fortextdeconone" %></p> </div>
+                      </div>
+                      <div class = "dataandfunction">
+                           <div class = "postcontentdata"><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+                              <div class = "superfunction">
+                              <%= link_to "", post_path(post.id), class: "fas fa-cog todetail"%>
+                               </div>
+                      </div>
+                 </div>
+                 <div class = "postcontentmain">
+                     <p><span></span><%=simple_format post.content %></p>
+                    
+                   
+                      <div class = "postcontentimage">
+                     <%= image_tag post.image.url, :size => '235x270',class: "postcontentimageinside" if post.image.present?%>
+                     </div>
+
+                     
+                 </div>
+            </div>
+<%# -------------------投稿の上部分終了--------------------------
+--------------------ここから投稿下部分----------------------- %>
+
+          <div class = "postlikecomment">
+          <% if user_signed_in? %>
+    <% if post.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+        <p><span><i class="fas fa-thumbs-up"></i></span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :delete %></p>
+    <% else %>
+        <p><span><i class="fas fa-thumbs-up">  </i></span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :post %></p>
+    <% end %>
+  <% else %>
+   <%end%>
+    <p><span>お気に入り数: </span><%= post.favorites.count %></p>
+      
+
+          </div>
+
+          
+      
+
+     </div>
+
+ <% end %>
+
+
+<%# ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー %>
+
+
+         </div>
+
+</div>
+
+
+
+
+
+</div>

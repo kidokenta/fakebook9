@@ -1,0 +1,129 @@
+.editwrapper{
+  background:red;
+  height:90%;
+  width:100%;
+  display:flex;
+  .currentpage{
+    height:100%;
+    width:50%;
+    background:white;
+    border-right:2px solid black;
+    position: relative;
+
+    .usimagenamewrapper{
+      background:rgb(222, 187, 124);
+      height:30%;
+      width:96%;
+      margin:0 auto;
+      position:relative;
+      .userbackimage{
+        height:100%;
+        width:100%;
+
+      }
+      .imagenamebox{
+        height:100px;
+        width:100%;
+        position: absolute;
+        bottom:0;
+        z-index:0;
+        display:flex;
+        align-items: center;
+        
+        
+        .usimagebox{
+          background:gray;
+          height:150px;
+          width:150px;
+          border-radius:50%;
+          float:left;
+        }
+        .userimage{
+          height:150px;
+          width:150px;
+          border-radius:50%;
+          .usnamebox{
+            background:red;
+          }
+        }
+      }
+  }
+}
+
+.intindexbox{
+  margin-top:30px;
+  margin-left:20px;
+}
+.backbtn{
+  position: absolute;
+  bottom:10px;
+}
+
+  .futurepage{
+    background:white;
+    height:100%;
+    width:50%;
+  }
+}
+.edittitles{
+  width:100%;
+  display:flex;
+  justify-content: space-evenly;
+ .currentslide{
+   width:50%;
+   color:white;
+   text-align: center;
+ }
+ .futureslide{
+   width:50%;
+   color:white;
+   text-align: center;
+ }
+}
+
+.editimageswrapper{
+  width:100%;
+  height:30%;
+  background:gray;
+  margin:0 auto;
+  position:relative;
+  .editimageball{
+    height:150px;
+    width:150px;
+    background:white;
+    border-radius:50%;
+    border:2px solid black;
+    float:left;
+    position:absolute;
+    bottom:-30px;
+
+  }
+}
+.edit_user{
+  background:white;
+  height:100%;
+  width:96%;
+  margin:0 auto;
+}
+
+.editmain{
+  background:white;
+  height:60%;
+  width:90%;
+  margin-top:30px;
+  margin-left:20px;
+  position: relative;
+}
+.usnamebox{
+  color:white;
+}
+
+
+  .updatebtn{
+    float:right;
+    position: absolute;
+    bottom:5px;
+    right:10px;
+  }
+
+  

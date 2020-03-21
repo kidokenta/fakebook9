@@ -1,0 +1,121 @@
+.uswrapper{
+  background: white;
+  height:100%;
+  width:96%;
+  margin: 0 auto;
+
+
+  .usimagenamewrapper{
+    background:rgb(222, 187, 124);
+    height:30%;
+    width:96%;
+    margin:0 auto;
+    position:relative;
+    .userbackimage{
+      height:100%;
+      width:100%;
+    }
+    .superfunc{
+      height:50px;
+      width:50%;
+      float:right;
+      position:absolute;
+      top:15px;
+      right:10px;
+      color:white;
+    }
+    .imagenamebox{
+      height:100px;
+      width:100%;
+      position: absolute;
+      bottom:0;
+      z-index:0;
+      display:flex;
+      align-items: center;
+      
+      
+      .usimagebox{
+        background:gray;
+        height:150px;
+        width:150px;
+        border-radius:50%;
+        float:left;
+      }
+      .userimage{
+        height:150px;
+        width:150px;
+        border-radius:50%;
+      }
+      .usnamebox{
+        height:40%;
+        width:50%;
+        font-size:30px;
+        color:white;
+
+      }
+    }
+
+  }
+  .intindexbox{
+    height:65%;
+    width:96%;
+    margin:0 auto;
+    margin-top:25px;
+    display:flex;
+    justify-content: space-evenly;
+
+
+
+    .usintwrapper{
+
+      background:white;
+      width:35%;
+      height:400px;
+      .userinttitle{
+        margin-top:10px;
+        color:rgb(104, 104, 186);
+      }
+      .usint{
+        background:white;
+        height:30%;
+        width:100%;
+        border-bottom:1px solid gray;
+      }
+      .uscontent{
+        font-size:20px;
+      }
+
+    }
+
+      .usindexwrapper{
+      height:100%;
+      width:60%;
+      overflow: scroll;
+      border:1px solid gray;
+        background: url(bg1.jpg) no-repeat;
+        background-size:cover;
+    }
+}
+
+
+}
+
+
+
+
+
+.postcontentimageinside{
+  height:100%;
+  width:100%;
+}
+.toptop{
+  text-decoration: none;
+  color:white;
+}
+
+.userfollows{
+  background:white;
+  height:90%;
+  width:90%;
+  margin: 0 auto;
+}
