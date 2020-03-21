@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: fakebook9_production
-  username: fakebook9
-  password: <%= ENV['FAKEBOOK9_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
