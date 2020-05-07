@@ -54,9 +54,9 @@ test:
 #   adapter: postgresql
 #   encoding: unicode
 #   pool: 5
-# production:
-#   <<: *default
-#   database: fakebook9_production
-#   username: root
-#   password: <%= ENV['DATABASE_PASSWORD'] %>
-#   socket: /var/lib/mysql/mysql.sock
+production:
+  <<: *default
+  database: fakebook9_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
