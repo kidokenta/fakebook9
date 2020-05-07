@@ -48,12 +48,12 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 
-production:
-#半角スペース２個分の空白を開ける
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+# production:
+# #半角スペース２個分の空白を開ける
+#   <<: *default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
 # production:
 #   <<: *default
 #   database: fakebook9_production

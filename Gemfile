@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3' #do ~ end内部に追加。他のgemは残してください。
   # gem 'capistrano'
   # gem 'capistrano-rbenv'
   # gem 'capistrano-bundler'
@@ -76,8 +75,7 @@ group :test do
 end
 
 group :production do
-  # gem 'unicorn', '5.4.1'
-  gem 'pg'
+  gem 'unicorn', '5.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
