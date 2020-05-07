@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby 2.5.1
 
 # This file loads Spring without using Bundler, in order to be fast.
 # It gets overwritten when you run the `spring binstub` command.
