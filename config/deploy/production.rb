@@ -9,11 +9,11 @@
 
 server '54.178.238.62', user: 'ec2-user', roles: %w{app db web}
 
+set :rails_env, "production"
+set :unicorn_rack_env, "production"
 # role-based syntax
 # ==================
-set :ssh_options, {
-  keys: [File.expand_path('~/.ssh/chat-space.pem')],
-}
+
 
 
 # Defines a role with one or multiple servers. The primary server in each
